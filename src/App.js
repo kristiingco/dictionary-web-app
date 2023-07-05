@@ -1,11 +1,12 @@
 import "./App.css";
+import Dictionary from "./components/Dictionary/Dictionary";
 import MenuBar from "./components/MenuBar/MenuBar";
 
 function App() {
   return (
     <div className='App'>
       <MenuBar />
-      <h1>Dictionary Web App</h1>
+      <Dictionary />
     </div>
   );
 }

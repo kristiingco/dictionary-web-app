@@ -1,10 +1,10 @@
 import React from "react";
+import Search from "../Search/Search";
 
 const Dictionary = () => {
   return (
     <div>
-      {/* Search */}
-      <input type='' />
+      <Search />
       {/* Word Information */}
     </div>
   );
