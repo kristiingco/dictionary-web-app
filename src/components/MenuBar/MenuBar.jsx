@@ -1,18 +1,18 @@
 import { ReactComponent as Logo } from "../../assets/images/logo.svg";
-import { Checkbox, Container, Dropdown } from "semantic-ui-react";
+import { Checkbox, Menu, Dropdown } from "semantic-ui-react";
 
 const MenuBar = () => {
   return (
-    <div>
+    <Menu fluid secondary>
       <Logo />
       {/* Font Menu */}
-      <Container position='right'>
+      <Menu.Item position='right'>
         <Dropdown />
         <Checkbox toggle />
-      </Container>
+      </Menu.Item>
 
       {/* Dark Mode */}
-    </div>
+    </Menu>
   );
 };
 
