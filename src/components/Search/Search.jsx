@@ -4,7 +4,7 @@ import { Input } from "semantic-ui-react";
 const Search = () => {
   return (
     <div>
-      <Input icon='search' placeholder='Search for any word...' />
+      <Input icon='search' placeholder='Search for any word...' fluid />
     </div>
   );
 };

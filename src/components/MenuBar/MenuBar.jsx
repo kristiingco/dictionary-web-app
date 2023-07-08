@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { ReactComponent as Logo } from "../../assets/images/logo.svg";
-import { Checkbox, Menu, Dropdown } from "semantic-ui-react";
+import { Checkbox, Menu, Dropdown, Icon, Divider } from "semantic-ui-react";
+
+import "./MenuBar.scss";
 
 const MenuBar = () => {
   const [currentFont, setCurrentFont] = useState("Sans Serif");
@@ -9,7 +11,7 @@ const MenuBar = () => {
       <Logo />
       {/* Font Menu */}
       <Menu.Item position='right'>
-        <Dropdown text={currentFont}>
+        <Dropdown text={currentFont} className='menu__font-dropdown'>
           <Dropdown.Menu>
             <Dropdown.Item
               text='Sans Serif'
@@ -29,6 +31,7 @@ const MenuBar = () => {
           </Dropdown.Menu>
         </Dropdown>
         <Checkbox toggle />
+        <Icon name='moon outline' size='large' />
       </Menu.Item>
 
       {/* Dark Mode */}
