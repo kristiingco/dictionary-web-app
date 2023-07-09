@@ -27,7 +27,11 @@ const Word = () => {
           </Grid.Column>
           <Grid.Column>
             <Segment textAlign='right' basic>
-              <Button circular icon='play' size='massive' />
+              <Button
+                circular
+                icon={{ name: "play", color: "purple" }}
+                size='massive'
+              />
             </Segment>
           </Grid.Column>
         </Grid.Row>

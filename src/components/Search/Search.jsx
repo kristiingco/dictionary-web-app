@@ -26,6 +26,7 @@ const Search = () => {
       <Input
         icon={{
           name: "search",
+          color: "purple",
           link: true,
           onClick: onClickHandler,
         }}
