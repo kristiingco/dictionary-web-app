@@ -4,10 +4,15 @@ import Word from "../Word/Word";
 
 const Dictionary = () => {
   const [searchWord, setSearchWord] = useState("");
+  const [wordInfo, setWordInfo] = useState({});
   return (
     <div>
-      <Search setSearchWord={setSearchWord} />
-      <Word word={searchWord} />
+      <Search
+        searchWord={searchWord}
+        setSearchWord={setSearchWord}
+        setWordInfo={setWordInfo}
+      />
+      <Word wordInfo={wordInfo} />
     </div>
   );
 };
