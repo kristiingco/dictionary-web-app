@@ -11,7 +11,19 @@ import { WordContext } from "../../contexts/WordContext";
 
 const Word = () => {
   const { wordInfo, setSearchWord } = useContext(WordContext);
-  const { word, phonetic, meanings, sourceUrls } = wordInfo;
+  const { word, phonetic, phonetics, meanings, sourceUrls } = wordInfo;
+
+  let audio = null;
+
+  if (phonetics && phonetics[0].audio) {
+    audio = new Audio(phonetics[0].audio);
+  }
+
+  const onPlay = () => {
+    if (audio) {
+      audio.play();
+    }
+  };
   return (
     <Container fluid>
       <Grid columns={2} fluid>
@@ -21,9 +33,7 @@ const Word = () => {
               <Header as='h1'>{word}</Header>
             </Segment>
 
-            <Segment basic>
-              <span>{phonetic}</span>
-            </Segment>
+            <Segment basic>{phonetic && <span>{phonetic}</span>}</Segment>
           </Grid.Column>
           <Grid.Column>
             <Segment textAlign='right' basic>
@@ -31,6 +41,7 @@ const Word = () => {
                 circular
                 icon={{ name: "play", color: "purple" }}
                 size='massive'
+                onClick={onPlay}
               />
             </Segment>
           </Grid.Column>
