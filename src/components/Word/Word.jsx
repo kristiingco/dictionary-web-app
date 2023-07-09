@@ -10,7 +10,7 @@ import {
 import { WordContext } from "../../contexts/WordContext";
 
 const Word = () => {
-  const { wordInfo } = useContext(WordContext);
+  const { wordInfo, setSearchWord } = useContext(WordContext);
   const { word, phonetic, meanings, sourceUrls } = wordInfo;
   return (
     <Container>
@@ -31,16 +31,30 @@ const Word = () => {
         </Grid.Row>
       </Grid>
       {meanings &&
-        meanings.map(({ partOfSpeech, definitions }, idx) => {
+        meanings.map(({ partOfSpeech, definitions, synonyms }, idx) => {
           return (
             <div key={idx}>
               <Divider horizontal>{partOfSpeech}</Divider>
               <span>Meaning</span>
               <ul>
-                {definitions.map(({ definition }) => {
-                  return <li>{definition}</li>;
-                })}
+                {definitions &&
+                  definitions.map(({ definition }) => {
+                    return <li>{definition}</li>;
+                  })}
               </ul>
+              {synonyms && (
+                <div>
+                  Synonyms:
+                  {synonyms.map((synonym, idx) => {
+                    return (
+                      <span onClick={() => setSearchWord(synonym)}>
+                        {synonym}
+                        {idx !== synonyms.length - 1 ? "," : ""}
+                      </span>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           );
         })}
