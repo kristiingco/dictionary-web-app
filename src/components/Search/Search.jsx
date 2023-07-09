@@ -1,17 +1,35 @@
-import React from "react";
+import { useState } from "react";
 import { Input } from "semantic-ui-react";
 
 const Search = ({ setSearchWord }) => {
-  const searchHandler = (e) => {
-    setSearchWord(e.target.value);
+  const [input, setInput] = useState("");
+
+  const onChangeHandler = (e) => {
+    setInput(e.target.value);
   };
+
+  const onClickHandler = () => {
+    setSearchWord(input);
+  };
+
+  const onKeyPressHandler = (event) => {
+    if (event.key === "Enter") {
+      setSearchWord(input);
+    }
+  };
+
   return (
     <div>
       <Input
-        icon='search'
+        icon={{
+          name: "search",
+          link: true,
+          onClick: onClickHandler,
+        }}
         placeholder='Search for any word...'
         fluid
-        onChange={searchHandler}
+        onChange={onChangeHandler}
+        onKeyPress={onKeyPressHandler}
       />
     </div>
   );
