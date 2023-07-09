@@ -13,21 +13,23 @@ const Word = () => {
   const { wordInfo, setSearchWord } = useContext(WordContext);
   const { word, phonetic, meanings, sourceUrls } = wordInfo;
   return (
-    <Container>
-      <Grid columns={2}>
+    <Container fluid>
+      <Grid columns={2} fluid>
         <Grid.Row stretched>
           <Grid.Column>
-            <Segment>
+            <Segment basic>
               <Header as='h1'>{word}</Header>
             </Segment>
 
-            <Segment>
+            <Segment basic>
               <span>{phonetic}</span>
             </Segment>
           </Grid.Column>
-          <Segment>
-            <Button circular icon='play' size='massive' />
-          </Segment>
+          <Grid.Column>
+            <Segment textAlign='right' basic>
+              <Button circular icon='play' size='massive' />
+            </Segment>
+          </Grid.Column>
         </Grid.Row>
       </Grid>
       {meanings &&
