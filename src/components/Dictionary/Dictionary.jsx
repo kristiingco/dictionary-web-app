@@ -3,7 +3,7 @@ import Search from "../Search/Search";
 import Word from "../Word/Word";
 
 const Dictionary = () => {
-  let [searchWord, setSearchWord] = useState("hello");
+  const [searchWord, setSearchWord] = useState("");
   return (
     <div>
       <Search setSearchWord={setSearchWord} />
