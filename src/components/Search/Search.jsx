@@ -1,24 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState, useContext } from "react";
 import { Input } from "semantic-ui-react";
+import { WordContext } from "../../contexts/WordContext";
 
-const Search = ({ searchWord, setSearchWord, setWordInfo }) => {
+const Search = () => {
   const [input, setInput] = useState("");
 
-  useEffect(() => {
-    const searchWordChangeHandler = () => {
-      fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${searchWord}`)
-        .then((response) => response.json())
-        .then((data) => {
-          setWordInfo(data[0]);
-          console.log(data[0]);
-        })
-        .catch((err) => {
-          console.log(err.message);
-        });
-    };
-
-    searchWordChangeHandler();
-  }, [searchWord]);
+  const { setSearchWord } = useContext(WordContext);
 
   const onChangeHandler = (e) => {
     setInput(e.target.value);

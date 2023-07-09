@@ -1,12 +1,35 @@
-import { Header, Button, Divider, Container } from "semantic-ui-react";
+import { useContext } from "react";
+import {
+  Header,
+  Button,
+  Divider,
+  Container,
+  Grid,
+  Segment,
+} from "semantic-ui-react";
+import { WordContext } from "../../contexts/WordContext";
 
-const Word = ({ wordInfo }) => {
+const Word = () => {
+  const { wordInfo } = useContext(WordContext);
   const { word, phonetic, meanings, sourceUrls } = wordInfo;
   return (
     <Container>
-      <Header as='h1'>{word}</Header>
-      <span>{phonetic}</span>
-      <Button circular icon='play' />
+      <Grid columns={2}>
+        <Grid.Row stretched>
+          <Grid.Column>
+            <Segment>
+              <Header as='h1'>{word}</Header>
+            </Segment>
+
+            <Segment>
+              <span>{phonetic}</span>
+            </Segment>
+          </Grid.Column>
+          <Segment>
+            <Button circular icon='play' size='massive' />
+          </Segment>
+        </Grid.Row>
+      </Grid>
       {meanings &&
         meanings.map(({ partOfSpeech, definitions }, idx) => {
           return (
@@ -22,7 +45,7 @@ const Word = ({ wordInfo }) => {
           );
         })}
       <Divider />
-      <span>Source: {sourceUrls[0]}</span>
+      {sourceUrls && <span>Source: {sourceUrls[0]}</span>}
     </Container>
   );
 };
