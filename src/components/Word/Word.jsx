@@ -44,7 +44,7 @@ const Word = () => {
                     return <li>{definition}</li>;
                   })}
               </ul>
-              {synonyms && (
+              {synonyms && synonyms.length > 0 && (
                 <div>
                   Synonyms:
                   {synonyms.map((synonym, idx) => {
