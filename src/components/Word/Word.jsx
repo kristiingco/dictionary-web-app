@@ -65,12 +65,16 @@ const Word = () => {
                   </ul>
                   {synonyms && synonyms.length > 0 && (
                     <div>
-                      Synonyms:
+                      Synonyms:{" "}
                       {synonyms.map((synonym, idx) => {
                         return (
                           <span className='word__definition__synonym'>
                             {synonym}
-                            {idx !== synonyms.length - 1 ? "," : ""}
+                            {idx !== synonyms.length - 1 ? (
+                              <span style={{ color: "black" }}>, </span>
+                            ) : (
+                              ""
+                            )}
                           </span>
                         );
                       })}
