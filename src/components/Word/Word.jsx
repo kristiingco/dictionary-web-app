@@ -9,6 +9,8 @@ import {
 } from "semantic-ui-react";
 import { WordContext } from "../../contexts/WordContext";
 
+import "./Word.scss";
+
 const Word = () => {
   const { wordInfo, wordExists, setSearchWord } = useContext(WordContext);
   const { word, phonetic, phonetics, meanings, sourceUrls } = wordInfo;
@@ -66,7 +68,7 @@ const Word = () => {
                       Synonyms:
                       {synonyms.map((synonym, idx) => {
                         return (
-                          <span onClick={() => setSearchWord(synonym)}>
+                          <span className='word__definition__synonym'>
                             {synonym}
                             {idx !== synonyms.length - 1 ? "," : ""}
                           </span>

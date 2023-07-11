@@ -5,7 +5,8 @@ export const WordContext = createContext({
   setSearchWord: () => null,
   wordInfo: {},
   setWordInfo: () => null,
-  wordExists: false,
+  wordExists: true,
+  checkIfSynonymExists: () => null,
 });
 
 export const WordProvider = ({ children }) => {
@@ -38,7 +39,13 @@ export const WordProvider = ({ children }) => {
 
   return (
     <WordContext.Provider
-      value={{ searchWord, setSearchWord, wordInfo, setWordInfo, wordExists }}
+      value={{
+        searchWord,
+        setSearchWord,
+        wordInfo,
+        setWordInfo,
+        wordExists,
+      }}
     >
       {children}
     </WordContext.Provider>
