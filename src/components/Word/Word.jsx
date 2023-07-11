@@ -80,7 +80,11 @@ const Word = () => {
               );
             })}
           <Divider />
-          {sourceUrls && <span>Source: {sourceUrls[0]}</span>}
+          {sourceUrls && (
+            <span>
+              Source: <a href={sourceUrls[0]}>{sourceUrls[0]}</a>
+            </span>
+          )}
         </div>
       ) : (
         <div>
