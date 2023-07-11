@@ -1,3 +1,10 @@
 .word__definition__synonym {
   color: purple;
 }
+
+.word--no-definition-container {
+  margin-top: 100px;
+  .word--no-definition-container__emoji {
+    font-size: 64px;
+  }
+}

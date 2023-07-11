@@ -87,10 +87,18 @@ const Word = () => {
           )}
         </div>
       ) : (
-        <div>
+        <Container
+          text
+          textAlign='center'
+          className='word--no-definition-container'
+        >
+          <span className='word--no-definition-container__emoji'>😕</span>
           <Header as='h2'>{wordInfo.title}</Header>
-          <span>{wordInfo.resolution}</span>
-        </div>
+          <span>
+            Sorry pal, we couldn't find the definitions of the word you're
+            looking for. {wordInfo.resolution}
+          </span>
+        </Container>
       )}
     </Container>
   );
