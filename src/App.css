@@ -2,3 +2,15 @@
   color: black;
   text-decoration: underline;
 }
+
+body .sans-serif {
+  font-family: "Inter" !important;
+}
+
+body .serif {
+  font-family: "Lora" !important;
+}
+
+body .mono {
+  font-family: "Inconsolata" !important;
+}

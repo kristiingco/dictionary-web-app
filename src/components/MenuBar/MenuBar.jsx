@@ -1,32 +1,45 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 import { Checkbox, Menu, Dropdown, Icon, Divider } from "semantic-ui-react";
 
 import "./MenuBar.scss";
+import { FontContext } from "../../contexts/FontContext";
 
 const MenuBar = () => {
-  const [currentFont, setCurrentFont] = useState("Sans Serif");
+  const { currentFont, setCurrentFont } = useContext(FontContext);
+
+  const getFont = () => {
+    if (currentFont === "sans-serif") return "Sans Serif";
+    else if (currentFont === "serif") return "Serif";
+    else return "Mono";
+  };
   return (
     <Menu fluid secondary>
       <Logo />
       {/* Font Menu */}
       <Menu.Item position='right'>
-        <Dropdown text={currentFont} className='menu__font-dropdown'>
+        <Dropdown
+          text={() => getFont()}
+          className={`menu__font-dropdown ${currentFont}`}
+        >
           <Dropdown.Menu>
             <Dropdown.Item
               text='Sans Serif'
-              active={currentFont === "Sans Serif"}
-              onClick={() => setCurrentFont("Sans Serif")}
+              active={currentFont === "sans-serif"}
+              onClick={() => setCurrentFont("sans-serif")}
+              className='sans-serif'
             />
             <Dropdown.Item
               text='Serif'
-              active={currentFont === "Serif"}
-              onClick={() => setCurrentFont("Serif")}
+              active={currentFont === "serif"}
+              onClick={() => setCurrentFont("serif")}
+              className='serif'
             />
             <Dropdown.Item
               text='Mono'
-              active={currentFont === "Mono"}
-              onClick={() => setCurrentFont("Mono")}
+              active={currentFont === "mono"}
+              onClick={() => setCurrentFont("mono")}
+              className='mono'
             />
           </Dropdown.Menu>
         </Dropdown>

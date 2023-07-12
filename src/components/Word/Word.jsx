@@ -10,9 +10,11 @@ import {
 import { WordContext } from "../../contexts/WordContext";
 
 import "./Word.scss";
+import { FontContext } from "../../contexts/FontContext";
 
 const Word = () => {
-  const { wordInfo, wordExists, setSearchWord } = useContext(WordContext);
+  const { wordInfo, wordExists } = useContext(WordContext);
+  const { currentFont } = useContext(FontContext);
   const { word, phonetic, phonetics, meanings, sourceUrls } = wordInfo;
 
   let audio = null;
@@ -34,7 +36,9 @@ const Word = () => {
             <Grid.Row stretched>
               <Grid.Column>
                 <Segment basic>
-                  <Header as='h1'>{word}</Header>
+                  <Header as='h1' className={currentFont}>
+                    {word}
+                  </Header>
                 </Segment>
 
                 <Segment basic>{phonetic && <span>{phonetic}</span>}</Segment>
