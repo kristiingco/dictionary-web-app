@@ -98,10 +98,12 @@ const Word = () => {
         <Container
           text
           textAlign='center'
-          className='word--no-definition-container'
+          className={`word--no-definition-container ${currentFont}`}
         >
           <span className='word--no-definition-container__emoji'>😕</span>
-          <Header as='h2'>{wordInfo.title}</Header>
+          <Header as='h2' className={currentFont}>
+            {wordInfo.title}
+          </Header>
           <span>
             Sorry pal, we couldn't find the definitions of the word you're
             looking for. {wordInfo.resolution}
