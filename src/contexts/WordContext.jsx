@@ -10,7 +10,7 @@ export const WordContext = createContext({
 });
 
 export const WordProvider = ({ children }) => {
-  const [searchWord, setSearchWord] = useState("hello");
+  const [searchWord, setSearchWord] = useState("");
   const [wordInfo, setWordInfo] = useState({});
   const [wordExists, setWordExists] = useState(true);
 

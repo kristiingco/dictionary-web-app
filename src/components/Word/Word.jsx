@@ -44,14 +44,16 @@ const Word = () => {
                 <Segment basic>{phonetic && <span>{phonetic}</span>}</Segment>
               </Grid.Column>
               <Grid.Column>
-                <Segment textAlign='right' basic>
-                  <Button
-                    circular
-                    icon={{ name: "play", color: "purple" }}
-                    size='massive'
-                    onClick={onPlay}
-                  />
-                </Segment>
+                {audio && (
+                  <Segment textAlign='right' basic>
+                    <Button
+                      circular
+                      icon={{ name: "play", color: "purple" }}
+                      size='massive'
+                      onClick={onPlay}
+                    />
+                  </Segment>
+                )}
               </Grid.Column>
             </Grid.Row>
           </Grid>
@@ -87,7 +89,8 @@ const Word = () => {
                 </div>
               );
             })}
-          <Divider />
+          {word && <Divider />}
+
           {sourceUrls && (
             <span>
               Source: <a href={sourceUrls[0]}>{sourceUrls[0]}</a>
