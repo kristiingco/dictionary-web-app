@@ -19,7 +19,7 @@ const Word = () => {
 
   let audio = null;
 
-  if (phonetics && phonetics[0].audio) {
+  if (phonetics && phonetics.length > 0 && phonetics[0].audio) {
     audio = new Audio(phonetics[0].audio);
   }
 
