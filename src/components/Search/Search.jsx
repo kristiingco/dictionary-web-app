@@ -12,12 +12,14 @@ const Search = () => {
   };
 
   const onClickHandler = () => {
-    setSearchWord(input);
+    if (input === "") alert("Can't be empty.");
+    else setSearchWord(input);
   };
 
   const onKeyPressHandler = (event) => {
     if (event.key === "Enter") {
-      setSearchWord(input);
+      if (input === "") alert("Can't be empty.");
+      else setSearchWord(input);
     }
   };
 
