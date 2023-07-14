@@ -1,21 +1,26 @@
-import { useEffect, useContext } from "react";
 import { Container } from "semantic-ui-react";
-import "./App.css";
 import Dictionary from "./components/Dictionary/Dictionary";
 import MenuBar from "./components/MenuBar/MenuBar";
 import { WordProvider } from "./contexts/WordContext";
 import { FontProvider } from "./contexts/FontContext";
+import { DarkModeProvider } from "./contexts/DarkModeContext";
+
+import "./App.css";
 
 function App() {
   return (
-    <Container className='App'>
-      <FontProvider>
-        <WordProvider>
-          <MenuBar />
-          <Dictionary />
-        </WordProvider>
-      </FontProvider>
-    </Container>
+    <div className='App'>
+      <DarkModeProvider>
+        <FontProvider>
+          <WordProvider>
+            <Container>
+              <MenuBar />
+              <Dictionary />
+            </Container>
+          </WordProvider>
+        </FontProvider>
+      </DarkModeProvider>
+    </div>
   );
 }
 
