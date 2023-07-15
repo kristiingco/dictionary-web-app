@@ -12,6 +12,8 @@ import { WordContext } from "../../contexts/WordContext";
 import "./Word.scss";
 import { FontContext } from "../../contexts/FontContext";
 
+import { ReactComponent as NewWindowIcon } from "../../assets/images/icon-new-window.svg";
+
 const Word = () => {
   const { wordInfo, wordExists } = useContext(WordContext);
   const { currentFont } = useContext(FontContext);
@@ -94,6 +96,7 @@ const Word = () => {
           {sourceUrls && (
             <span>
               Source: <a href={sourceUrls[0]}>{sourceUrls[0]}</a>
+              <NewWindowIcon />
             </span>
           )}
         </div>
