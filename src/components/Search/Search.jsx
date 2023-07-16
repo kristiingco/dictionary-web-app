@@ -4,6 +4,7 @@ import { WordContext } from "../../contexts/WordContext";
 
 const Search = () => {
   const [input, setInput] = useState("");
+  const [hasError, setHasError] = useState(false);
 
   const { setSearchWord } = useContext(WordContext);
 
@@ -12,14 +13,20 @@ const Search = () => {
   };
 
   const onClickHandler = () => {
-    if (input === "") alert("Can't be empty.");
-    else setSearchWord(input);
+    if (input === "") setHasError(true);
+    else {
+      setHasError(false);
+      setSearchWord(input);
+    }
   };
 
   const onKeyPressHandler = (event) => {
     if (event.key === "Enter") {
-      if (input === "") alert("Can't be empty.");
-      else setSearchWord(input);
+      if (input === "") setHasError(true);
+      else {
+        setHasError(false);
+        setSearchWord(input);
+      }
     }
   };
 
@@ -36,7 +43,9 @@ const Search = () => {
         fluid
         onChange={onChangeHandler}
         onKeyPress={onKeyPressHandler}
+        error={hasError}
       />
+      {hasError && <span>Whoops, can't be empty...</span>}
     </div>
   );
 };
