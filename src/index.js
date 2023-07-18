@@ -4,11 +4,20 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "semantic-ui-css/semantic.min.css";
+import { WordProvider } from "./contexts/WordContext";
+import { FontProvider } from "./contexts/FontContext";
+import { DarkModeProvider } from "./contexts/DarkModeContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <DarkModeProvider>
+      <FontProvider>
+        <WordProvider>
+          <App />
+        </WordProvider>
+      </FontProvider>
+    </DarkModeProvider>
   </React.StrictMode>
 );
 
