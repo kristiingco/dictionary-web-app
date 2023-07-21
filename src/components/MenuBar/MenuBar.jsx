@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { ReactComponent as Logo } from "../../assets/images/logo.svg";
-import { Checkbox, Menu, Dropdown, Icon, Divider } from "semantic-ui-react";
+import { ReactComponent as MoonIcon } from "../../assets/images/icon-moon.svg";
+import { Checkbox, Menu, Dropdown, Icon } from "semantic-ui-react";
 
-import "./MenuBar.scss";
 import { FontContext } from "../../contexts/FontContext";
 import { DarkModeContext } from "../../contexts/DarkModeContext";
+
+import "./MenuBar.scss";
 
 const MenuBar = () => {
   const { currentFont, setCurrentFont } = useContext(FontContext);
@@ -21,43 +23,48 @@ const MenuBar = () => {
   };
 
   return (
-    <Menu fluid secondary>
-      <Logo />
-      {/* Font Menu */}
-      <Menu.Item position='right'>
-        <Dropdown
-          text={() => getFont()}
-          className={`menu__font-dropdown ${currentFont}`}
-        >
-          <Dropdown.Menu>
-            <Dropdown.Item
-              text='Sans Serif'
-              active={currentFont === "sans-serif"}
-              onClick={() => setCurrentFont("sans-serif")}
-              className='sans-serif'
+    <div class='menu--main'>
+      <Menu fluid secondary>
+        <Logo />
+        <Menu.Item position='right'>
+          <Dropdown
+            text={() => getFont()}
+            className={`menu__font-dropdown ${currentFont}`}
+          >
+            <Dropdown.Menu>
+              <Dropdown.Item
+                text='Sans Serif'
+                active={currentFont === "sans-serif"}
+                onClick={() => setCurrentFont("sans-serif")}
+                className='sans-serif'
+              />
+              <Dropdown.Item
+                text='Serif'
+                active={currentFont === "serif"}
+                onClick={() => setCurrentFont("serif")}
+                className='serif'
+              />
+              <Dropdown.Item
+                text='Mono'
+                active={currentFont === "mono"}
+                onClick={() => setCurrentFont("mono")}
+                className='mono'
+              />
+            </Dropdown.Menu>
+          </Dropdown>
+          <div className='menu__divider'></div>
+          <div className='menu__dark-mode-toggle-container'>
+            <Checkbox
+              toggle
+              checked={isDarkMode}
+              onClick={onClickDarkModeHandler}
+              className='dark-mode-toggle-container__toggle'
             />
-            <Dropdown.Item
-              text='Serif'
-              active={currentFont === "serif"}
-              onClick={() => setCurrentFont("serif")}
-              className='serif'
-            />
-            <Dropdown.Item
-              text='Mono'
-              active={currentFont === "mono"}
-              onClick={() => setCurrentFont("mono")}
-              className='mono'
-            />
-          </Dropdown.Menu>
-        </Dropdown>
-        <Checkbox
-          toggle
-          checked={isDarkMode}
-          onClick={onClickDarkModeHandler}
-        />
-        <Icon name='moon outline' size='large' />
-      </Menu.Item>
-    </Menu>
+            <MoonIcon />
+          </div>
+        </Menu.Item>
+      </Menu>
+    </div>
   );
 };
 
