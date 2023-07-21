@@ -67,8 +67,8 @@ const Word = () => {
                   <span>Meaning</span>
                   <ul>
                     {definitions &&
-                      definitions.map(({ definition }) => {
-                        return <li>{definition}</li>;
+                      definitions.map(({ definition }, idx) => {
+                        return <li key={idx}>{definition}</li>;
                       })}
                   </ul>
                   {synonyms && synonyms.length > 0 && (
@@ -76,7 +76,7 @@ const Word = () => {
                       Synonyms:{" "}
                       {synonyms.map((synonym, idx) => {
                         return (
-                          <span className='word__definition__synonym'>
+                          <span className='word__definition__synonym' key={idx}>
                             {synonym}
                             {idx !== synonyms.length - 1 ? (
                               <span style={{ color: "black" }}>, </span>
