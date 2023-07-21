@@ -30,6 +30,10 @@ const MenuBar = () => {
           <Dropdown
             text={() => getFont()}
             className={`menu__font-dropdown ${currentFont}`}
+            icon={{
+              name: "angle down",
+              color: "purple",
+            }}
           >
             <Dropdown.Menu>
               <Dropdown.Item
