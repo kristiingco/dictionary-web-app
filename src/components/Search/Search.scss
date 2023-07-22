@@ -40,6 +40,8 @@
   }
 
   &.ui.input > input:focus {
+    background-color: #1f1f1f;
+    color: white;
     @include focus-search-bar-styles;
   }
 
