@@ -14,7 +14,7 @@ import "./Word.scss";
 
 import { ReactComponent as NewWindowIcon } from "../../assets/images/icon-new-window.svg";
 import { DarkModeContext } from "../../contexts/DarkModeContext";
-import DefinitionDivider from "../DefinitionDivider/DefinitionDivider";
+import Definition from "../Definition/Definition";
 
 const Word = () => {
   const [audio, setAudio] = useState(null);
@@ -79,41 +79,11 @@ const Word = () => {
             meanings.map(({ partOfSpeech, definitions, synonyms }, idx) => {
               return (
                 <div key={idx}>
-                  <DefinitionDivider partOfSpeech={partOfSpeech} />
-                  <span className='word__header--small'>Meaning</span>
-                  <ul>
-                    {definitions &&
-                      definitions.map(({ definition, example }, idx) => {
-                        return (
-                          <div key={idx} style={{ marginBottom: 10 }}>
-                            <li>{definition}</li>
-                            {example && (
-                              <span className='word__header--small'>
-                                "{example}"
-                              </span>
-                            )}
-                          </div>
-                        );
-                      })}
-                  </ul>
-                  {synonyms && synonyms.length > 0 && (
-                    <div>
-                      <span className='word__header--small'>Synonyms </span>
-
-                      {synonyms.map((synonym, idx) => {
-                        return (
-                          <span className='word__definition__synonym' key={idx}>
-                            {synonym}
-                            {idx !== synonyms.length - 1 ? (
-                              <span style={{ color: "black" }}> </span>
-                            ) : (
-                              ""
-                            )}
-                          </span>
-                        );
-                      })}
-                    </div>
-                  )}
+                  <Definition
+                    partOfSpeech={partOfSpeech}
+                    definitions={definitions}
+                    synonyms={synonyms}
+                  />
                 </div>
               );
             })}

@@ -28,6 +28,10 @@ body .dark-mode {
   min-height: 100vh;
 }
 
+.word__header--small {
+  color: #757575;
+}
+
 @media screen and (min-width: 992px) {
   .container--main {
     width: 60% !important;
