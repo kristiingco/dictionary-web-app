@@ -24,6 +24,10 @@
   }
 }
 
+.word__source {
+  padding-bottom: 24px;
+}
+
 @media screen and (max-width: 768px) {
   .word__source {
     span:first-child {

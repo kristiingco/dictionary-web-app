@@ -14,3 +14,9 @@ body .serif {
 body .mono {
   font-family: "Inconsolata" !important;
 }
+
+@media screen and (min-width: 992px) {
+  .container--main {
+    width: 60% !important;
+  }
+}

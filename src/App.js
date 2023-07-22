@@ -7,7 +7,7 @@ import "./App.css";
 function App() {
   return (
     <div className='App'>
-      <Container>
+      <Container className='container--main'>
         <MenuBar />
         <Dictionary />
       </Container>
