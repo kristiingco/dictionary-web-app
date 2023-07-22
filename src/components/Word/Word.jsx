@@ -39,6 +39,7 @@ const Word = () => {
       audio.play();
     }
   };
+
   return (
     <div>
       {wordExists ? (

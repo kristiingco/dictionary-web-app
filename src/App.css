@@ -1,6 +1,11 @@
 .App a {
   color: black;
   text-decoration: underline;
+
+  &:hover {
+    color: black;
+    text-decoration: underline;
+  }
 }
 
 body .sans-serif {

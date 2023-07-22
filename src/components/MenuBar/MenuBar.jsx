@@ -66,7 +66,9 @@ const MenuBar = () => {
               onClick={onClickDarkModeHandler}
               className='dark-mode-toggle-container__toggle'
             />
-            <MoonIcon />
+            <MoonIcon
+              className={isDarkMode ? "moon-icon--dark" : "moon-icon"}
+            />
           </div>
         </Menu.Item>
       </Menu>
