@@ -1,0 +1,54 @@
+@mixin default-search-bar-styles {
+  border: none;
+  font-weight: bold;
+  padding: 15px;
+  font-family: inherit;
+  border-radius: 16px;
+}
+
+@mixin focus-search-bar-styles {
+  border: 2px solid #a445ed;
+}
+
+@mixin error-search-bar-styles {
+  border: 2px solid #ff5252;
+  border-radius: 16px;
+}
+
+.search-bar {
+  &.ui.input > input {
+    background-color: #f4f4f4;
+    @include default-search-bar-styles;
+  }
+
+  &.ui.input > input:focus {
+    @include focus-search-bar-styles;
+  }
+
+  &.ui.input.error > input {
+    background-color: #f4f4f4;
+    color: black;
+    @include error-search-bar-styles;
+  }
+}
+
+.search-bar--dark {
+  &.ui.input > input {
+    background-color: #1f1f1f;
+    @include default-search-bar-styles;
+  }
+
+  &.ui.input > input:focus {
+    @include focus-search-bar-styles;
+  }
+
+  &.ui.input.error > input {
+    background-color: #1f1f1f;
+    @include error-search-bar-styles;
+  }
+}
+
+.search-bar--error {
+  color: #ff5252;
+  font-size: 12px;
+}
