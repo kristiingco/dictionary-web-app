@@ -29,6 +29,10 @@
 }
 
 @media screen and (max-width: 768px) {
+  .word__keyword {
+    font-size: 2.5em !important;
+  }
+
   .word__source {
     span:first-child {
       text-decoration: underline;
