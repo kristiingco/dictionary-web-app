@@ -14,6 +14,7 @@ import "./Word.scss";
 
 import { ReactComponent as NewWindowIcon } from "../../assets/images/icon-new-window.svg";
 import { DarkModeContext } from "../../contexts/DarkModeContext";
+import DefinitionDivider from "../DefinitionDivider/DefinitionDivider";
 
 const Word = () => {
   const [audio, setAudio] = useState(null);
@@ -78,7 +79,7 @@ const Word = () => {
             meanings.map(({ partOfSpeech, definitions, synonyms }, idx) => {
               return (
                 <div key={idx}>
-                  <Divider horizontal>{partOfSpeech}</Divider>
+                  <DefinitionDivider partOfSpeech={partOfSpeech} />
                   <span className='word__header--small'>Meaning</span>
                   <ul>
                     {definitions &&

@@ -1,0 +1,20 @@
+.definition__divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0px;
+
+  span {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 24px;
+    margin-right: 10px;
+  }
+
+  hr {
+    flex-grow: 1;
+    height: 1px;
+    background-color: rgba(117, 117, 117, 0.5);
+    border: none;
+  }
+}
