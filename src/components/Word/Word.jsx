@@ -99,6 +99,8 @@ const Word = () => {
                 <a
                   href={sourceUrls[0]}
                   className={`${isDarkMode ? "dark-mode" : ""}`}
+                  target='_blank'
+                  rel='noreferrer'
                 >
                   {sourceUrls[0]}
                 </a>
