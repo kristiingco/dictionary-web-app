@@ -30,7 +30,7 @@ const MenuBar = () => {
           <Dropdown
             text={() => getFont()}
             className={`menu__font-dropdown ${currentFont} ${
-              isDarkMode ? "dark-mode" : ""
+              isDarkMode ? "dark-mode menu__dropdown--dark-mode" : ""
             }`}
             icon={{
               name: "angle down",

@@ -1,5 +1,8 @@
+import { useContext } from "react";
 import DefinitionDivider from "../DefinitionDivider/DefinitionDivider";
+import { DarkModeContext } from "../../contexts/DarkModeContext";
 const Definition = ({ partOfSpeech, definitions, synonyms }) => {
+  const { isDarkMode } = useContext(DarkModeContext);
   return (
     <div>
       <DefinitionDivider partOfSpeech={partOfSpeech} />
@@ -24,7 +27,15 @@ const Definition = ({ partOfSpeech, definitions, synonyms }) => {
           {synonyms.map((synonym, idx) => {
             return (
               <span className='word__definition__synonym' key={idx}>
-                {synonym}{" "}
+                {synonym}
+                {idx !== synonyms.length - 1 ? (
+                  <span style={{ color: isDarkMode ? "white" : "black" }}>
+                    {" "}
+                    |{" "}
+                  </span>
+                ) : (
+                  ""
+                )}
               </span>
             );
           })}
