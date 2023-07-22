@@ -1,7 +1,9 @@
 import { useContext } from "react";
-import { FontContext } from "../../contexts/FontContext";
+
 import Search from "../Search/Search";
 import Word from "../Word/Word";
+
+import { FontContext } from "../../contexts/FontContext";
 
 const Dictionary = () => {
   const { currentFont } = useContext(FontContext);

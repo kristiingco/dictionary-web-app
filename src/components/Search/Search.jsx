@@ -1,10 +1,12 @@
 import { useState, useContext } from "react";
-import { Input } from "semantic-ui-react";
-import { WordContext } from "../../contexts/WordContext";
 
-import "./Search.scss";
+import { Input } from "semantic-ui-react";
+
+import { WordContext } from "../../contexts/WordContext";
 import { FontContext } from "../../contexts/FontContext";
 import { DarkModeContext } from "../../contexts/DarkModeContext";
+
+import "./Search.scss";
 
 const Search = () => {
   const [input, setInput] = useState("");

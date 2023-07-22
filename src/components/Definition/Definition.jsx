@@ -1,5 +1,7 @@
 import { useContext } from "react";
+
 import DefinitionDivider from "../DefinitionDivider/DefinitionDivider";
+
 import { DarkModeContext } from "../../contexts/DarkModeContext";
 const Definition = ({ partOfSpeech, definitions, synonyms }) => {
   const { isDarkMode } = useContext(DarkModeContext);

@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+
 import {
   Header,
   Button,
@@ -7,14 +8,15 @@ import {
   Grid,
   Segment,
 } from "semantic-ui-react";
+
+import Definition from "../Definition/Definition";
+import { ReactComponent as NewWindowIcon } from "../../assets/images/icon-new-window.svg";
+
 import { WordContext } from "../../contexts/WordContext";
 import { FontContext } from "../../contexts/FontContext";
+import { DarkModeContext } from "../../contexts/DarkModeContext";
 
 import "./Word.scss";
-
-import { ReactComponent as NewWindowIcon } from "../../assets/images/icon-new-window.svg";
-import { DarkModeContext } from "../../contexts/DarkModeContext";
-import Definition from "../Definition/Definition";
 
 const Word = () => {
   const [audio, setAudio] = useState(null);

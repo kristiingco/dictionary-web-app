@@ -1,7 +1,9 @@
 import { useContext } from "react";
+
+import { Checkbox, Menu, Dropdown } from "semantic-ui-react";
+
 import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 import { ReactComponent as MoonIcon } from "../../assets/images/icon-moon.svg";
-import { Checkbox, Menu, Dropdown } from "semantic-ui-react";
 
 import { FontContext } from "../../contexts/FontContext";
 import { DarkModeContext } from "../../contexts/DarkModeContext";

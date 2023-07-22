@@ -1,6 +1,7 @@
 import { useContext } from "react";
 
 import { Container } from "semantic-ui-react";
+
 import Dictionary from "./components/Dictionary/Dictionary";
 import MenuBar from "./components/MenuBar/MenuBar";
 
