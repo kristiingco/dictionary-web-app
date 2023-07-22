@@ -24,7 +24,6 @@ export const WordProvider = ({ children }) => {
         } else {
           setWordExists(true);
           setWordInfo(data[0]);
-          console.log(data[0]);
         }
       })
       .catch((err) => {
@@ -34,7 +33,6 @@ export const WordProvider = ({ children }) => {
 
   useEffect(() => {
     searchWordChangeHandler();
-    console.log(wordExists);
   }, [searchWord]);
 
   return (
