@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 import { ReactComponent as MoonIcon } from "../../assets/images/icon-moon.svg";
-import { Checkbox, Menu, Dropdown, Icon } from "semantic-ui-react";
+import { Checkbox, Menu, Dropdown } from "semantic-ui-react";
 
 import { FontContext } from "../../contexts/FontContext";
 import { DarkModeContext } from "../../contexts/DarkModeContext";
@@ -29,7 +29,9 @@ const MenuBar = () => {
         <Menu.Item position='right'>
           <Dropdown
             text={() => getFont()}
-            className={`menu__font-dropdown ${currentFont}`}
+            className={`menu__font-dropdown ${currentFont} ${
+              isDarkMode ? "dark-mode" : ""
+            }`}
             icon={{
               name: "angle down",
               color: "purple",

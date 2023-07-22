@@ -8,16 +8,18 @@ import {
   Segment,
 } from "semantic-ui-react";
 import { WordContext } from "../../contexts/WordContext";
-
-import "./Word.scss";
 import { FontContext } from "../../contexts/FontContext";
 
+import "./Word.scss";
+
 import { ReactComponent as NewWindowIcon } from "../../assets/images/icon-new-window.svg";
+import { DarkModeContext } from "../../contexts/DarkModeContext";
 
 const Word = () => {
   const [audio, setAudio] = useState(null);
   const { wordInfo, wordExists } = useContext(WordContext);
   const { currentFont } = useContext(FontContext);
+  const { isDarkMode } = useContext(DarkModeContext);
   const { word, phonetic, phonetics, meanings, sourceUrls } = wordInfo;
 
   useEffect(() => {
@@ -44,7 +46,12 @@ const Word = () => {
             <Grid.Row>
               <Grid.Column>
                 <Segment basic>
-                  <Header as='h1' className={`word__keyword  ${currentFont}`}>
+                  <Header
+                    as='h1'
+                    className={`word__keyword  ${currentFont} ${
+                      isDarkMode ? "dark-mode" : ""
+                    }`}
+                  >
                     {word}
                   </Header>
                   {phonetic && (
@@ -75,8 +82,17 @@ const Word = () => {
                   <span className='word__header--small'>Meaning</span>
                   <ul>
                     {definitions &&
-                      definitions.map(({ definition }, idx) => {
-                        return <li key={idx}>{definition}</li>;
+                      definitions.map(({ definition, example }, idx) => {
+                        return (
+                          <div key={idx} style={{ marginBottom: 10 }}>
+                            <li>{definition}</li>
+                            {example && (
+                              <span className='word__header--small'>
+                                "{example}"
+                              </span>
+                            )}
+                          </div>
+                        );
                       })}
                   </ul>
                   {synonyms && synonyms.length > 0 && (
@@ -88,7 +104,7 @@ const Word = () => {
                           <span className='word__definition__synonym' key={idx}>
                             {synonym}
                             {idx !== synonyms.length - 1 ? (
-                              <span style={{ color: "black" }}>, </span>
+                              <span style={{ color: "black" }}> </span>
                             ) : (
                               ""
                             )}
@@ -106,7 +122,12 @@ const Word = () => {
             <div className='word__source'>
               <span className='word__header--small'>Source </span>
               <span>
-                <a href={sourceUrls[0]}>{sourceUrls[0]}</a>
+                <a
+                  href={sourceUrls[0]}
+                  className={`${isDarkMode ? "dark-mode" : ""}`}
+                >
+                  {sourceUrls[0]}
+                </a>
                 <NewWindowIcon style={{ marginLeft: 5, marginBottom: -2 }} />
               </span>
             </div>
@@ -119,7 +140,10 @@ const Word = () => {
           className={`word--no-definition-container ${currentFont}`}
         >
           <span className='word--no-definition-container__emoji'>😕</span>
-          <Header as='h2' className={currentFont}>
+          <Header
+            as='h2'
+            className={`${currentFont} ${isDarkMode ? "dark-mode" : ""}`}
+          >
             {wordInfo.title}
           </Header>
           <span>
