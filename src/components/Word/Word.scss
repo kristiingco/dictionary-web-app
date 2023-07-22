@@ -1,10 +1,35 @@
+.word__keyword {
+  font-size: 3em !important;
+}
+
+.word__phonetics {
+  color: #a445ed;
+  position: relative;
+  bottom: 10px;
+}
+
+.word__header--small {
+  color: #757575;
+}
+
 .word__definition__synonym {
-  color: purple;
+  color: #a445ed;
+  font-weight: bold;
 }
 
 .word--no-definition-container {
   margin-top: 100px;
   .word--no-definition-container__emoji {
     font-size: 64px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .word__source {
+    span:first-child {
+      text-decoration: underline;
+    }
+    display: flex;
+    flex-direction: column;
   }
 }

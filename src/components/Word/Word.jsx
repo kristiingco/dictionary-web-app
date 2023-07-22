@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import {
   Header,
   Button,
@@ -15,15 +15,21 @@ import { FontContext } from "../../contexts/FontContext";
 import { ReactComponent as NewWindowIcon } from "../../assets/images/icon-new-window.svg";
 
 const Word = () => {
+  const [audio, setAudio] = useState(null);
   const { wordInfo, wordExists } = useContext(WordContext);
   const { currentFont } = useContext(FontContext);
   const { word, phonetic, phonetics, meanings, sourceUrls } = wordInfo;
 
-  let audio = null;
-
-  if (phonetics && phonetics.length > 0 && phonetics[0].audio) {
-    audio = new Audio(phonetics[0].audio);
-  }
+  useEffect(() => {
+    if (phonetics && phonetics.length > 0) {
+      for (const p of phonetics) {
+        if (p.audio) {
+          setAudio(new Audio(p.audio));
+          break;
+        }
+      }
+    }
+  }, [word]);
 
   const onPlay = () => {
     if (audio) {
@@ -31,19 +37,20 @@ const Word = () => {
     }
   };
   return (
-    <Container fluid>
+    <div>
       {wordExists ? (
         <div>
           <Grid columns={2} fluid>
-            <Grid.Row stretched>
+            <Grid.Row>
               <Grid.Column>
                 <Segment basic>
-                  <Header as='h1' className={currentFont}>
+                  <Header as='h1' className={`word__keyword  ${currentFont}`}>
                     {word}
                   </Header>
+                  {phonetic && (
+                    <span className='word__phonetics'>{phonetic}</span>
+                  )}
                 </Segment>
-
-                <Segment basic>{phonetic && <span>{phonetic}</span>}</Segment>
               </Grid.Column>
               <Grid.Column>
                 {audio && (
@@ -53,6 +60,7 @@ const Word = () => {
                       icon={{ name: "play", color: "purple" }}
                       size='massive'
                       onClick={onPlay}
+                      style={{ backgroundColor: "rgba(164, 69, 237, 0.25)" }}
                     />
                   </Segment>
                 )}
@@ -64,7 +72,7 @@ const Word = () => {
               return (
                 <div key={idx}>
                   <Divider horizontal>{partOfSpeech}</Divider>
-                  <span>Meaning</span>
+                  <span className='word__header--small'>Meaning</span>
                   <ul>
                     {definitions &&
                       definitions.map(({ definition }, idx) => {
@@ -73,7 +81,8 @@ const Word = () => {
                   </ul>
                   {synonyms && synonyms.length > 0 && (
                     <div>
-                      Synonyms:{" "}
+                      <span className='word__header--small'>Synonyms </span>
+
                       {synonyms.map((synonym, idx) => {
                         return (
                           <span className='word__definition__synonym' key={idx}>
@@ -94,10 +103,13 @@ const Word = () => {
           {word && <Divider />}
 
           {sourceUrls && (
-            <span>
-              Source: <a href={sourceUrls[0]}>{sourceUrls[0]}</a>
-              <NewWindowIcon />
-            </span>
+            <div className='word__source'>
+              <span className='word__header--small'>Source </span>
+              <span>
+                <a href={sourceUrls[0]}>{sourceUrls[0]}</a>
+                <NewWindowIcon style={{ marginLeft: 5, marginBottom: -2 }} />
+              </span>
+            </div>
           )}
         </div>
       ) : (
@@ -116,7 +128,7 @@ const Word = () => {
           </span>
         </Container>
       )}
-    </Container>
+    </div>
   );
 };
 
