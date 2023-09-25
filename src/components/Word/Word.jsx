@@ -27,12 +27,15 @@ const Word = () => {
 
   useEffect(() => {
     if (phonetics && phonetics.length > 0) {
+      let audioExists = false;
       for (const p of phonetics) {
         if (p.audio) {
           setAudio(new Audio(p.audio));
+          audioExists = true;
           break;
         }
       }
+      if (!audioExists) setAudio(null);
     }
   }, [word]);
 
@@ -51,7 +54,7 @@ const Word = () => {
               <Grid.Column>
                 <Segment basic>
                   <Header
-                    as='h1'
+                    as="h1"
                     className={`word__keyword  ${currentFont} ${
                       isDarkMode ? "dark-mode" : ""
                     }`}
@@ -59,17 +62,17 @@ const Word = () => {
                     {word}
                   </Header>
                   {phonetic && (
-                    <span className='word__phonetics'>{phonetic}</span>
+                    <span className="word__phonetics">{phonetic}</span>
                   )}
                 </Segment>
               </Grid.Column>
               <Grid.Column>
                 {audio && (
-                  <Segment textAlign='right' basic>
+                  <Segment textAlign="right" basic>
                     <Button
                       circular
                       icon={{ name: "play", color: "purple" }}
-                      size='massive'
+                      size="massive"
                       onClick={onPlay}
                       style={{ backgroundColor: "rgba(164, 69, 237, 0.25)" }}
                     />
@@ -93,14 +96,14 @@ const Word = () => {
           {word && <Divider />}
 
           {sourceUrls && (
-            <div className='word__source'>
-              <span className='word__header--small'>Source </span>
+            <div className="word__source">
+              <span className="word__header--small">Source </span>
               <span>
                 <a
                   href={sourceUrls[0]}
                   className={`${isDarkMode ? "dark-mode" : ""}`}
-                  target='_blank'
-                  rel='noreferrer'
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   {sourceUrls[0]}
                 </a>
@@ -112,12 +115,12 @@ const Word = () => {
       ) : (
         <Container
           text
-          textAlign='center'
+          textAlign="center"
           className={`word--no-definition-container ${currentFont}`}
         >
-          <span className='word--no-definition-container__emoji'>😕</span>
+          <span className="word--no-definition-container__emoji">😕</span>
           <Header
-            as='h2'
+            as="h2"
             className={`${currentFont} ${isDarkMode ? "dark-mode" : ""}`}
           >
             {wordInfo.title}
